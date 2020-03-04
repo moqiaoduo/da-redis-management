@@ -10,7 +10,7 @@ if(isset($argv[1]) && $argv[1])
 
     if($redisController->deleteAllUserInstances($username))
     {
-        echo "User's redis instances removed.";
+        echo "用户的redis实例已移除";
     }
 }
 ?>

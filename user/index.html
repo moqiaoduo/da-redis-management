@@ -9,35 +9,34 @@ $username = getenv('USERNAME');
 
 $instances = $redisController->getInstances($username);
 
-echo '<p><a href="/CMD_PLUGINS/redis_management/create.html">Create new redis instance</a>.</p>';
-
-if($instances)
-{
-    echo '<table class="list table-highlight" cellpadding="3" cellspacing="1">
-    <tbody>
-    <tr>
-        <td class="listtitle">Host</td>
-        <td class="listtitle">Port</td>
-        <td class="listtitle">Password</td>
-        <td class="listtitle">Created</td>
-        <td class="listtitle">Delete</td>
-    </tr>';
-
-    foreach($instances as $instance)
-    {
-    echo '<tr>
-        <td valign="top" class="list">127.0.0.1</td>
-        <td valign="top" class="list">'.$instance['port'].'</td>
-        <td valign="top" class="list">'.$instance['password'].'</td>
-        <td valign="top" class="list">'.date('d-m-Y H:i', $instance['created']).'</td>
-        <td valign="top" class="list"><a href="/CMD_PLUGINS/redis_management/delete.html?PORT='.$instance['port'].'">Delete</a></td>
-    </tr>';
-    }
-
-    echo '</tbody></table>';
-}
-else
-{
-    echo '<p>No redis instances created yet. <a href="/CMD_PLUGINS/redis_management/create.html">Create new redis instance</a>.</p>';
-}
-?>
+if($instances):?>
+    <p><a href="/CMD_PLUGINS/redis_management/create.html">创建redis实例</a></p>
+    <div class="ui-table">
+        <div class="table">
+            <table class="table-elem --rotated --density:normal">
+                <thead>
+                    <tr class="table-row">
+                        <th width="auto">主机</th>
+                        <th width="auto">端口</th>
+                        <th width="auto">密码</th>
+                        <th width="auto">创建时间</th>
+                        <th width="auto">删除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($instances as $instance):?>
+                    <tr class="table-row">
+                        <td>127.0.0.1</td>
+                        <td><?php echo $instance['port']?></td>
+                        <td><?php echo $instance['password']?></td>
+                        <td><?php echo date('d-m-Y H:i', $instance['created'])?></td>
+                        <td><a href="/CMD_PLUGINS/redis_management/delete.html?PORT=<?php echo $instance['port']?>">Delete</a></td>
+                    </tr>
+                    <?php endforeach?>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+<?php else:?>
+    echo '<p>还未创建redis实例。 <a href="/CMD_PLUGINS/redis_management/create.html">来创建redis实例吧</a>！</p>';
+<?php endif?>
