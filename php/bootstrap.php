@@ -8,9 +8,11 @@ parse_str(getenv('POST'), $_POST);
 require_once dirname(__DIR__) . '/php/Controllers/RedisController.php';
 ?>
 <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script>
-    document.getElementById("iframe-container").style.display="inline-block";
-    document.getElementById("iframe-container").style.width='100vw';
-    document.getElementById("iframe-container").style.overflow='auto';
-</script>
-<div style="margin-top:10px;"></div>
+<style>
+    #iframe-container {
+        display: inline-block;
+        padding: 2rem;
+        width: 100vw;
+        overflow: auto;
+    }
+</style>
