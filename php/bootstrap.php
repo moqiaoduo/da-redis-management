@@ -11,7 +11,7 @@ require_once dirname(__DIR__) . '/php/Controllers/RedisController.php';
 <style>
     #iframe-container {
         display: inline-block;
-        padding: 2rem;
+        padding: 1rem;
         width: 100vw;
         overflow: auto;
     }
