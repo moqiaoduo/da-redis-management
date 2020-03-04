@@ -22,7 +22,7 @@ if($instanceData):
             <?php foreach($instanceData as $user => $instances):
                 foreach($instances as $instance):?>
             <tr class="table-row">
-                <td><a href="/CMD_SHOW_USER?user=<?php echo $user?>"><?php echo $user?></a></td>
+                <td><a href="_top" href="/CMD_SHOW_USER?user=<?php echo $user?>"><?php echo $user?></a></td>
                 <td>127.0.0.1</td>
                 <td><?php echo $instance['port']?></td>
                 <td><?php echo date('d-m-Y H:i', $instance['created'])?></td>
