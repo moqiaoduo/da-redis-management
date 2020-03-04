@@ -9,10 +9,10 @@ $username = getenv('USERNAME');
 
 if($redisController->createInstance($username))
 {
-    echo '<p>Redis实例已成功创建， <a href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
+    echo '<p>Redis实例已成功创建， <a class="btn btn-primary" href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
 }
 else
 {
-    echo '<p>Redis实例创建失败， <a href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
+    echo '<p>Redis实例创建失败， <a class="btn btn-primary" href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
 }
 ?>

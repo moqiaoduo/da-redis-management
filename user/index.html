@@ -10,33 +10,29 @@ $username = getenv('USERNAME');
 $instances = $redisController->getInstances($username);
 
 if($instances):?>
-    <p><a href="/CMD_PLUGINS/redis_management/create.html">创建redis实例</a></p>
-    <div class="ui-table">
-        <div class="table">
-            <table class="table-elem --rotated --density:normal">
-                <thead>
-                    <tr class="table-row">
-                        <th width="auto">主机</th>
-                        <th width="auto">端口</th>
-                        <th width="auto">密码</th>
-                        <th width="auto">创建时间</th>
-                        <th width="auto">删除</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($instances as $instance):?>
-                    <tr class="table-row">
-                        <td>127.0.0.1</td>
-                        <td><?php echo $instance['port']?></td>
-                        <td><?php echo $instance['password']?></td>
-                        <td><?php echo date('d-m-Y H:i', $instance['created'])?></td>
-                        <td><a href="/CMD_PLUGINS/redis_management/delete.html?PORT=<?php echo $instance['port']?>">Delete</a></td>
-                    </tr>
-                    <?php endforeach?>
-                </tbody>
-            </table>
-        </div> 
-    </div>
+    <p><a class="btn btn-success" href="/CMD_PLUGINS/redis_management/create.html">创建redis实例</a></p>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-row">
+                <th width="auto">主机</th>
+                <th width="auto">端口</th>
+                <th width="auto">密码</th>
+                <th width="auto">创建时间</th>
+                <th width="auto">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($instances as $instance):?>
+            <tr class="table-row">
+                <td>127.0.0.1</td>
+                <td><?php echo $instance['port']?></td>
+                <td><?php echo $instance['password']?></td>
+                <td><?php echo date('d-m-Y H:i', $instance['created'])?></td>
+                <td><a class="btn btn-danger" href="/CMD_PLUGINS/redis_management/delete.html?PORT=<?php echo $instance['port']?>">删除</a></td>
+            </tr>
+            <?php endforeach?>
+        </tbody>
+    </table>
 <?php else:?>
-    echo '<p>还未创建redis实例。 <a href="/CMD_PLUGINS/redis_management/create.html">来创建redis实例吧</a>！</p>';
+    echo '<p>还未创建redis实例。 <a class="btn btn-success" href="/CMD_PLUGINS/redis_management/create.html">来创建redis实例吧</a>！</p>';
 <?php endif?>
