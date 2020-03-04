@@ -7,7 +7,11 @@ $redisController = new \DirectAdmin\RedisManagement\Controllers\RedisController;
 
 $username = getenv('USERNAME');
 
-if($redisController->createInstance($username))
+if($redisController->checkUserLimit($username))
+{
+    echo '<p>创建数量已到达上限， <a class="btn btn-primary" href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
+}
+elseif($redisController->createInstance($username))
 {
     echo '<p>Redis实例已成功创建， <a class="btn btn-primary" href="/CMD_PLUGINS/redis_management">返回列表</a></p>';
 }

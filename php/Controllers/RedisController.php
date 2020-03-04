@@ -139,8 +139,6 @@ class RedisController
         $password = $this->_generatePassword();
         $port     = $this->_nextInstancePort;
 
-        if($this->_checkUserLimit($username)) return FALSE;
-
         // add instance
         if ($this->_addInstanceData($username, $port, $password))
         {
@@ -218,7 +216,7 @@ class RedisController
     /**
      * Check User Reach the Limit or not
      */
-    public function _checkUserLimit($username)
+    public function checkUserLimit($username)
     {
         return $this->_limit&&isset($this->_instances[$username])&&
             count($this->_instances[$username])>=$this->_userLimit&&
